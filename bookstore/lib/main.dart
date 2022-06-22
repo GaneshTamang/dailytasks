@@ -1,18 +1,21 @@
-import 'package:bookstore/home.dart';
 import 'package:flutter/material.dart';
+import 'package:local_database/screens/booklist_page.dart';
 
 void main() {
-  runApp(const BookApp());
+  runApp(const MyApp());
 }
 
-class BookApp extends StatelessWidget {
-  const BookApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'bookapp for crud',
-      home: HomePage(),
+    return MaterialApp(
+      title: 'Flutter Local Database demo app',
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+      ),
+      home: const BooksScreen(),
     );
   }
 }

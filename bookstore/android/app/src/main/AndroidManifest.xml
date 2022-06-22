@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.vanilla.bookstore">
+    package="com.example.local_database">
    <application
-        android:label="bookstore"
+        android:label="local_database"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
