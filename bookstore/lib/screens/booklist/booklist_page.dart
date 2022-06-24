@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import '../bookwidget/booktilecard.dart';
-import '../models/book_datamodel.dart';
-import '../services/bookserv.dart';
+import '../../bookwidget/booktilecard.dart';
+import '../../models/book_datamodel.dart';
+import '../../services/bookserv.dart';
 
-import 'addeditbook_screen.dart';
+import '../addeditbook_screen.dart';
 
-class BooksScreen extends StatefulWidget {
-  const BooksScreen({Key? key}) : super(key: key);
+class BooklistScreen extends StatefulWidget {
+  const BooklistScreen({Key? key}) : super(key: key);
 
   @override
-  State<BooksScreen> createState() => _BooksScreenState();
+  State<BooklistScreen> createState() => _BooklistScreenState();
 }
 
-class _BooksScreenState extends State<BooksScreen> {
+class _BooklistScreenState extends State<BooklistScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,8 +51,8 @@ class _BooksScreenState extends State<BooksScreen> {
               //for update
               if (snap.data != null) {
                 return ListView.builder(
-                  itemBuilder: (context, index) => BookWidget(
-                    book: snap.data![index],
+                  itemBuilder: (context, index) => BookTilecard(
+                    createdbook: snap.data![index],
                     tapforedit: () async {
                       await Navigator.push(
                           context,
@@ -95,7 +95,7 @@ class _BooksScreenState extends State<BooksScreen> {
                           });
                     },
                   ),
-                  //snaps data kist legtn and build card
+                  //snaps data list legtn and build card
                   itemCount: snap.data!.length,
                 );
               } else {

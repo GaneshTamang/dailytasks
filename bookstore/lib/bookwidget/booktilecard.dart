@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:local_database/models/book_datamodel.dart';
+import 'package:local_database/screens/booklist/dropdown_price_change.dart';
 
-class BookWidget extends StatelessWidget {
-  final BookDataModel book;
+class BookTilecard extends StatelessWidget {
+  //created bookmodel
+  final BookDataModel createdbook;
   //dispatching on section
   final VoidCallback tapforedit;
   final VoidCallback longpressfordelete;
-  const BookWidget(
+  //contructor
+  const BookTilecard(
       {Key? key,
-      required this.book,
+      required this.createdbook,
       required this.tapforedit,
       required this.longpressfordelete})
       : super(key: key);
@@ -32,7 +35,7 @@ class BookWidget extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: Text(
-                    book.bookmodeltitle,
+                    createdbook.bookmodeltitle,
                     style: const TextStyle(
                         fontSize: 18, fontWeight: FontWeight.bold),
                   ),
@@ -43,15 +46,24 @@ class BookWidget extends StatelessWidget {
                     thickness: 1,
                   ),
                 ),
-                Text('Author:${book.bookmodelauthor}',
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.w400)),
-                Text('Category:${book.bookmodelcategory}',
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.w400)),
-                Text('Price:${book.bookmodelprice}',
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.w400))
+                Center(
+                  child: Text('Author:${createdbook.bookmodelauthor}',
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w400)),
+                ),
+                // Text('Category:${createdbook.bookmodelcategory}',
+                // style: const TextStyle(
+                // fontSize: 16, fontWeight: FontWeight.w400)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Text('Price:${createdbook.bookmodelprice}',
+                    //     style: const TextStyle(
+                    //         fontSize: 16, fontWeight: FontWeight.w400)),
+                    const Text('Price:'),
+                    DropdownPriceChange(datamodprice: createdbook)
+                  ],
+                )
               ],
             ),
           ),

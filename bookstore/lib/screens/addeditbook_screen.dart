@@ -13,7 +13,7 @@ class AddBookScreen extends StatelessWidget {
     //created controller object and linked with db
     final editpagetitleController = TextEditingController();
     final editingpageauthorcontroller = TextEditingController();
-    final editingpagecategorycontroller = TextEditingController();
+    // final editingpagecategorycontroller = TextEditingController();
     final editingpagepricecontroller = TextEditingController();
     //incase of update showing previous data
     if (bookdetailsdatamodel != null) {
@@ -21,6 +21,12 @@ class AddBookScreen extends StatelessWidget {
       //linking text controller value from datamodel
       editpagetitleController.text = bookdetailsdatamodel!.bookmodeltitle;
       editingpageauthorcontroller.text = bookdetailsdatamodel!.bookmodelauthor;
+      // editingpagecategorycontroller.text =
+      // bookdetailsdatamodel!.bookmodelcategory;
+      //controller always takes and  send s data as string
+
+      editingpagepricecontroller.text =
+          bookdetailsdatamodel!.bookmodelprice.toString();
     }
 
     return Scaffold(
@@ -83,27 +89,27 @@ class AddBookScreen extends StatelessWidget {
               height: 10,
             ),
             //category
-            TextFormField(
-              //contoller named
-              controller: editingpagecategorycontroller,
-              maxLines: 1,
-              decoration: const InputDecoration(
-                  hintText: 'catergory',
-                  labelText: 'category',
-                  border: OutlineInputBorder(
-                      // borderSide: BorderSide(
-                      //   color: Color.fromARGB(255, 182, 15, 15),
-                      //   width: 0.75,
-                      // ),
-                      borderRadius: BorderRadius.all(
-                    Radius.circular(10.0),
-                  ))),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
+            // TextFormField(
+            //   //contoller named
+            //   controller: editingpagecategorycontroller,
+            //   maxLines: 1,
+            //   decoration: const InputDecoration(
+            //       hintText: 'catergory',
+            //       labelText: 'category',
+            //       border: OutlineInputBorder(
+            //           // borderSide: BorderSide(
+            //           //   color: Color.fromARGB(255, 182, 15, 15),
+            //           //   width: 0.75,
+            //           // ),
+            //           borderRadius: BorderRadius.all(
+            //         Radius.circular(10.0),
+            //       ))),
+            // ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
             //for price
-            TextFormField(
+            TextField(
               controller: editingpagepricecontroller,
               decoration: const InputDecoration(
                   hintText: 'Price',
@@ -134,14 +140,12 @@ class AddBookScreen extends StatelessWidget {
                           editpagetitleController.value.text;
                       final submitimeauthor =
                           editingpageauthorcontroller.value.text;
-                      final submittimecategory =
-                          editingpagecategorycontroller.value.text;
+
                       final submittimeprice =
                           editingpagepricecontroller.value.text;
 
                       if (submittimetitle.isEmpty ||
                           submitimeauthor.isEmpty ||
-                          submittimecategory.isEmpty ||
                           submittimeprice.isEmpty) {
                         return;
                       }
@@ -149,7 +153,7 @@ class AddBookScreen extends StatelessWidget {
                       final BookDataModel model = BookDataModel(
                           bookmodeltitle: submittimetitle,
                           bookmodelauthor: submitimeauthor,
-                          bookmodelcategory: submittimecategory,
+                          // bookmodelcategory: submittimecategory,
                           bookmodelprice: double.parse(submittimeprice),
                           bookmodelid: bookdetailsdatamodel?.bookmodelid);
                       //if this page controllersis nul at start add then update

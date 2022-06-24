@@ -13,41 +13,41 @@ class DatabaseHelper {
   static Future<Database> _getDBserv() async {
     return openDatabase(join(await getDatabasesPath(), _dbName),
         //oncreate qurery language qued to create table Book
-        onCreate: (db, version) async => await db.execute('''
+        onCreate: (db, version) async => await db.execute(
+            '''
            CREATE TABLE Book(id INTEGER PRIMARY KEY, 
            title TEXT NOT NULL,
            author TEXT NOT NULL,
-           category TEXT NOT NULL,
            price FLOAT NOT NULL);'''),
         version: _version);
   }
 
-  static Future<int> addBook(BookDataModel bookmodeldata) async {
+  static Future<int> addBook(BookDataModel tempbookmodedata) async {
     //first link
     final db = await _getDBserv();
     //here table Name book Refrenced for query
-    return await db.insert("Book", bookmodeldata.toJson(),
+    return await db.insert("Book", tempbookmodedata.toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
 //update
-  static Future<int> updateBook(BookDataModel bookmodeldata) async {
+  static Future<int> updateBook(BookDataModel tempbookmodedata) async {
     final db = await _getDBserv();
-    return await db.update("Book", bookmodeldata.toJson(),
+    return await db.update("Book", tempbookmodedata.toJson(),
         //where to to put id
         where: 'id = ?',
         //defenitions of  datd id with link arguments
-        whereArgs: [bookmodeldata.bookmodelid],
+        whereArgs: [tempbookmodedata.bookmodelid],
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
 //delete
-  static Future<int> deleteBook(BookDataModel bookmodeldata) async {
+  static Future<int> deleteBook(BookDataModel tempbookmodedata) async {
     final db = await _getDBserv();
     return await db.delete(
       "Book",
       where: 'id = ?',
-      whereArgs: [bookmodeldata.bookmodelid],
+      whereArgs: [tempbookmodedata.bookmodelid],
     );
   }
 
