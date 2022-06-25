@@ -1,14 +1,20 @@
+//remember the super inside the constructor is that  link between parent key andchild key
+//that is parent key value =child key value for accesssing parent class
+
 void main() {
   //parent class access
   Parent person1 = Parent(parentname: 'Durga', parentage: 50);
   // Parent person1 = Parent();
   print('used $person1');
   person1.describe();
+  //parent cant acccess child but child can access parent
+  // person1.showchildDetails();
 
   print('\n');
   Childrens son1 = Childrens('Ganesh', 25, 'bachelor', 20000);
   print('used $son1');
   son1.describe();
+  //accesed parent function from child object
   son1.showchildDetails();
 }
 
