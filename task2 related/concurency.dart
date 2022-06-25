@@ -10,6 +10,7 @@ void foo(var message) {
 
 void main() {
   //isolate and run in parrrelle;
+
   Isolate.spawn(foo, 'Hellooooooooo!!');
 //   Here, the spawn method of the Isolate class facilitates running a function, foo, in parallel with
 //   the rest of our code. The spawn function takes two parameters

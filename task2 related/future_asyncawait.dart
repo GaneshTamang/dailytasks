@@ -17,8 +17,8 @@ printfilecont() async {
 
   //then performing action if future action returns something
   Future<String> filecont = downloadf();
-  filecont.then((futdatholderaftersuccess) {
-    print('print content of file is -->${futdatholderaftersuccess}');
+  filecont.then((tempFutdatHolderAfterSuccess) {
+    print('print content of file is -->${tempFutdatHolderAfterSuccess}');
   });
 }
 
