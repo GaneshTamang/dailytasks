@@ -8,6 +8,10 @@ void main() {
     'height': 1.84,
     // 'weight': 1.2,
   };
+  //acccesing and operating with assigned value
+  var a = person1['age'];
+  print(a + 5);
+  print(person1['name']);
   //to check if key present or not
   print("contains key with key word 'name'");
   print(person1.containsKey('name'));
