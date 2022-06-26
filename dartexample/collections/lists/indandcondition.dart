@@ -7,7 +7,7 @@ void main() {
     2,
     'i am last here'
   ];
-
+//all lis operation summary
   print(cities.indexOf('bhakta'));
   print(cities.contains(2));
   cities.length;
