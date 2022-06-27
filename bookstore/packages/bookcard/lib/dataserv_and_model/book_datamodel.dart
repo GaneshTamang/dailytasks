@@ -1,3 +1,5 @@
+part of bookcard;
+
 class BookDataModel {
   //nullable
   final int? bookmodelid;
@@ -13,14 +15,16 @@ class BookDataModel {
       required this.bookmodelprice,
       this.bookmodelid});
 //from json to app
-  factory BookDataModel.fromJson(Map<String, dynamic> json) => BookDataModel(
-      bookmodelid: json['id'],
-      bookmodeltitle: json['title'],
-      bookmodelauthor: json['author'],
-      // bookmodelcategory: json['category'],
-      bookmodelprice: json['price']);
+  factory BookDataModel.myfromJsonisrecieve(
+          Map<String, dynamic> reciveddataMap) =>
+      BookDataModel(
+          bookmodelid: reciveddataMap['id'],
+          bookmodeltitle: reciveddataMap['title'],
+          bookmodelauthor: reciveddataMap['author'],
+          // bookmodelcategory: json['category'],
+          bookmodelprice: reciveddataMap['price']);
 //from app to json
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> mytoJsonistosend() => {
         'id': bookmodelid,
         'title': bookmodeltitle,
         'author': bookmodelauthor,

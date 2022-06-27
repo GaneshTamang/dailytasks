@@ -1,6 +1,5 @@
+import 'package:bookcard/ui/bookcard.dart';
 import 'package:flutter/material.dart';
-import 'package:local_database/models/book_datamodel.dart';
-import 'package:local_database/services/bookserv.dart';
 
 class AddBookScreen extends StatelessWidget {
   //nullable bookmodel created that is single row for add and update
@@ -158,9 +157,9 @@ class AddBookScreen extends StatelessWidget {
                           bookmodelid: bookdetailsdatamodel?.bookmodelid);
                       //if this page controllersis nul at start add then update
                       if (bookdetailsdatamodel == null) {
-                        await DatabaseHelper.addBook(model);
+                        await MyDatabaseHelperServ.myaddBookFunc(model);
                       } else {
-                        await DatabaseHelper.updateBook(model);
+                        await MyDatabaseHelperServ.updateBook(model);
                       }
 
                       Navigator.pop(context);

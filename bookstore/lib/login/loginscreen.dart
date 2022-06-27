@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:local_database/screens/frontscreeen.dart';
+import 'package:local_database/screens/catgorypage.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -53,17 +53,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       autofocus: false,
-
-                      //value to send after change
-
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'please enter email';
-                        } else if (!value.contains('@')) {
-                          return 'enter valid email';
-                        }
-                        return null;
-                      },
                       decoration: const InputDecoration(
                           hintText: 'Email',
                           labelText: 'Email',
@@ -76,12 +65,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: TextFormField(
                       autofocus: false,
                       obscureText: hide,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'please enter password';
-                        }
-                        return null;
-                      },
                       decoration: InputDecoration(
                           hintText: 'password',
                           labelText: 'password',

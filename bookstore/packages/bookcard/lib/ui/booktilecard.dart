@@ -1,17 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:local_database/models/book_datamodel.dart';
-import 'package:local_database/screens/booklist/dropdown_price_change.dart';
+part of bookcard;
 
 class BookTilecard extends StatelessWidget {
   //created bookmodel
-  final BookDataModel createdbook;
+  final BookDataModel createdbookcard;
   //dispatching on section
   final VoidCallback tapforedit;
   final VoidCallback longpressfordelete;
   //contructor
   const BookTilecard(
       {Key? key,
-      required this.createdbook,
+      //data long presss and  tap for edit and update
+      required this.createdbookcard,
       required this.tapforedit,
       required this.longpressfordelete})
       : super(key: key);
@@ -35,7 +34,7 @@ class BookTilecard extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: Text(
-                    createdbook.bookmodeltitle,
+                    createdbookcard.bookmodeltitle,
                     style: const TextStyle(
                         fontSize: 18, fontWeight: FontWeight.bold),
                   ),
@@ -47,7 +46,7 @@ class BookTilecard extends StatelessWidget {
                   ),
                 ),
                 Center(
-                  child: Text('Author:${createdbook.bookmodelauthor}',
+                  child: Text('Author:${createdbookcard.bookmodelauthor}',
                       style: const TextStyle(
                           fontSize: 16, fontWeight: FontWeight.w400)),
                 ),
@@ -61,7 +60,7 @@ class BookTilecard extends StatelessWidget {
                     //     style: const TextStyle(
                     //         fontSize: 16, fontWeight: FontWeight.w400)),
                     const Text('Price:'),
-                    DropdownPriceChange(datamodprice: createdbook)
+                    DropdownPriceChange(datamodprice: createdbookcard)
                   ],
                 )
               ],

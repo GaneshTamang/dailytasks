@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:local_database/models/book_datamodel.dart';
+part of bookcard;
 
 class DropdownPriceChange extends StatefulWidget {
   final BookDataModel datamodprice;
