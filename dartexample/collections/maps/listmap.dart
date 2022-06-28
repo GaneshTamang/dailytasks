@@ -26,9 +26,7 @@ void main() {
   print(resturantslist.runtimeType);
 
   for (var getting_Resturant_map in resturantslist) {
-    print(
-        'entering resturant of :${getting_Resturant_map['name']}\n & cheking rate  in realtime:');
-    //making sure list inside map as double
+    //making sure list inside map as map
     final getting_Ratings_of_Resturants =
         getting_Resturant_map['ratings'] as List<double>;
     //operating on aquired list
@@ -40,8 +38,7 @@ void main() {
     }
 
     print('avg rating of resturant of ${getting_Resturant_map['name']}');
-    print(
-        'avg rating is:${(avg_rating / getting_Ratings_of_Resturants.length).toStringAsFixed(2)}');
+    print('avg rating is:${avg_rating / getting_Ratings_of_Resturants.length}');
     print('\n');
   }
 }
