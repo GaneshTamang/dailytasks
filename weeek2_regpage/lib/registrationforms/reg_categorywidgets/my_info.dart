@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MyInfo extends StatefulWidget {
-  const MyInfo({Key? key}) : super(key: key);
+  const MyInfo({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<MyInfo> createState() => _MyInfoState();
@@ -12,16 +14,20 @@ class _MyInfoState extends State<MyInfo> {
   TextEditingController idNameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    // log(widget.isExpanded.toString());
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.black)),
+            border: Border.all(color: Colors.grey)),
 
         //Expansion tile for id
         child: ExpansionTile(
           title: _gettiletitle(),
+
+          maintainState: true,
+
           //on expansion childrens with form
           children: [
             //id name form
@@ -75,7 +81,9 @@ class _MyInfoState extends State<MyInfo> {
       child: TextFormField(
         controller: idNumberController,
         validator: (cntrlrvalue) {
-          if (cntrlrvalue != null && cntrlrvalue.length < 14) {
+          if (cntrlrvalue != null &&
+              cntrlrvalue.length < 14 &&
+              cntrlrvalue == '') {
             return 'enter atleast 14 char';
           }
           return null;
@@ -88,8 +96,7 @@ class _MyInfoState extends State<MyInfo> {
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(
-                color: Color.fromARGB(255, 172, 106, 106), width: 1.5),
+            borderSide: const BorderSide(color: Colors.grey, width: 1.5),
           ),
           focusedBorder: OutlineInputBorder(
             gapPadding: 0.0,
@@ -126,8 +133,7 @@ class _MyInfoState extends State<MyInfo> {
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(
-                color: Color.fromARGB(255, 172, 106, 106), width: 1.5),
+            borderSide: const BorderSide(color: Colors.grey, width: 1.5),
           ),
           focusedBorder: OutlineInputBorder(
             gapPadding: 0.0,

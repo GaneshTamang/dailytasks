@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:registrationpage/registrationforms/dropdowns.dart/isssuedcountry_drop_down.dart';
 
 class PassportReg extends StatefulWidget {
-  const PassportReg({
-    Key? key,
-  }) : super(key: key);
+  final String sm;
+  const PassportReg({Key? key, required this.sm}) : super(key: key);
 
   @override
   State<PassportReg> createState() => _PassportRegState();
@@ -26,6 +26,7 @@ class _PassportRegState extends State<PassportReg> {
 
         //Expansion tile for form
         child: ExpansionTile(
+          maintainState: true,
           title:
               //title decoration for heading withbox
               _passportFormTitleDeco(),
@@ -38,6 +39,9 @@ class _PassportRegState extends State<PassportReg> {
 
             //issue date
             _getPassportissuedateForm(context),
+            widget.sm == 'Malaysia'
+                ? const IssuedCountryDropDwon()
+                : const SizedBox(),
           ],
         ),
       ),
@@ -49,6 +53,13 @@ class _PassportRegState extends State<PassportReg> {
       padding: const EdgeInsets.only(right: 50, left: 40, top: 10, bottom: 10),
       child: TextFormField(
         controller: passportIssuedDateController,
+        validator: (value) {
+          if (value == "") {
+            return 'Date is Empty';
+          } else {
+            return null;
+          }
+        },
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           suffixIcon: IconButton(
@@ -78,8 +89,7 @@ class _PassportRegState extends State<PassportReg> {
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(
-                color: Color.fromARGB(255, 172, 106, 106), width: 1.5),
+            borderSide: const BorderSide(color: Colors.grey, width: 1.5),
           ),
           focusedBorder: OutlineInputBorder(
             gapPadding: 0.0,
@@ -102,6 +112,13 @@ class _PassportRegState extends State<PassportReg> {
       padding: const EdgeInsets.only(right: 50, left: 40, top: 10, bottom: 10),
       child: TextFormField(
         controller: passportExpiryDateController,
+        validator: (value) {
+          if (value == "") {
+            return 'Date is Empty';
+          } else {
+            return null;
+          }
+        },
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           suffixIcon: IconButton(
@@ -130,8 +147,7 @@ class _PassportRegState extends State<PassportReg> {
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(
-                color: Color.fromARGB(255, 172, 106, 106), width: 1.5),
+            borderSide: const BorderSide(color: Colors.grey, width: 1.5),
           ),
           focusedBorder: OutlineInputBorder(
             gapPadding: 0.0,
@@ -168,8 +184,7 @@ class _PassportRegState extends State<PassportReg> {
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(
-                color: Color.fromARGB(255, 172, 106, 106), width: 1.5),
+            borderSide: const BorderSide(color: Colors.grey, width: 1.5),
           ),
           focusedBorder: OutlineInputBorder(
             gapPadding: 0.0,

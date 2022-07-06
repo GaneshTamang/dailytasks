@@ -21,9 +21,10 @@ class _MyPrRegState extends State<MyPrReg> {
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.black)),
+            border: Border.all(color: Colors.grey)),
         //Expansion tile init
         child: ExpansionTile(
+          maintainState: true,
           title:
               //title decoration for heading withbox
               Padding(
@@ -80,14 +81,14 @@ class _MyPrRegState extends State<MyPrReg> {
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
-                    borderSide: const BorderSide(
-                        color: Color.fromARGB(255, 172, 106, 106), width: 1.5),
+                    borderSide:
+                        const BorderSide(color: Colors.grey, width: 1.5),
                   ),
                   focusedBorder: OutlineInputBorder(
                     gapPadding: 0.0,
                     borderRadius: BorderRadius.circular(15),
-                    borderSide: const BorderSide(
-                        color: Color.fromARGB(255, 235, 26, 11), width: 1.5),
+                    borderSide:
+                        const BorderSide(color: Colors.grey, width: 1.5),
                   ),
                   // focusedBorder: OutlineInputBorder(
 
@@ -104,6 +105,13 @@ class _MyPrRegState extends State<MyPrReg> {
                   right: 50, left: 40, top: 10, bottom: 10),
               child: TextFormField(
                 controller: expirydatecontroller,
+                validator: (value) {
+                  if (value == "") {
+                    return 'Date is Empty';
+                  } else {
+                    return null;
+                  }
+                },
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
                   suffixIcon: IconButton(
@@ -132,14 +140,14 @@ class _MyPrRegState extends State<MyPrReg> {
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
-                    borderSide: const BorderSide(
-                        color: Color.fromARGB(255, 172, 106, 106), width: 1.5),
+                    borderSide:
+                        const BorderSide(color: Colors.grey, width: 1.5),
                   ),
                   focusedBorder: OutlineInputBorder(
                     gapPadding: 0.0,
                     borderRadius: BorderRadius.circular(15),
-                    borderSide: const BorderSide(
-                        color: Color.fromARGB(255, 235, 26, 11), width: 1.5),
+                    borderSide:
+                        const BorderSide(color: Colors.grey, width: 1.5),
                   ),
                   // focusedBorder: OutlineInputBorder(
 

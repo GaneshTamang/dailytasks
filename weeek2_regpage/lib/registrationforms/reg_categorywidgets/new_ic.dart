@@ -23,6 +23,7 @@ class _NewIcregState extends State<NewIcreg> {
 
         //Expansion tile
         child: ExpansionTile(
+          maintainState: true,
           title:
               //title decoration for heading withbox
               _setTiletitle(),
@@ -44,6 +45,13 @@ class _NewIcregState extends State<NewIcreg> {
       child: TextFormField(
         keyboardType: TextInputType.datetime,
         controller: icdatecontroller,
+        validator: (value) {
+          if (value == "") {
+            return 'Date is Empty';
+          } else {
+            return null;
+          }
+        },
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           suffixIcon: IconButton(
@@ -73,14 +81,12 @@ class _NewIcregState extends State<NewIcreg> {
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(
-                color: Color.fromARGB(255, 172, 106, 106), width: 1.5),
+            borderSide: const BorderSide(color: Colors.grey, width: 1.5),
           ),
           focusedBorder: OutlineInputBorder(
             gapPadding: 0.0,
             borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(
-                color: Color.fromARGB(255, 235, 26, 11), width: 1.5),
+            borderSide: const BorderSide(color: Colors.grey, width: 1.5),
           ),
           // focusedBorder: OutlineInputBorder(
 
@@ -111,14 +117,12 @@ class _NewIcregState extends State<NewIcreg> {
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(
-                color: Color.fromARGB(255, 172, 106, 106), width: 1.5),
+            borderSide: const BorderSide(color: Colors.grey, width: 1.5),
           ),
           focusedBorder: OutlineInputBorder(
             gapPadding: 0.0,
             borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(
-                color: Color.fromARGB(255, 235, 26, 11), width: 1.5),
+            borderSide: const BorderSide(color: Colors.grey, width: 1.5),
           ),
           // focusedBorder: OutlineInputBorder(
 

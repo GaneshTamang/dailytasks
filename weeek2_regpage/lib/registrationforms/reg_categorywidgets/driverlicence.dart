@@ -20,7 +20,7 @@ class _DriverlicenceRegState extends State<DriverlicenceReg> {
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.black)),
+            border: Border.all(color: Colors.grey)),
 
         //Expansion tile
         child: _textformfordriverLicence(),
@@ -30,6 +30,9 @@ class _DriverlicenceRegState extends State<DriverlicenceReg> {
 
   ExpansionTile _textformfordriverLicence() {
     return ExpansionTile(
+      initiallyExpanded: true,
+      maintainState: true,
+
       title:
           //title decoration for heading withbox
           Padding(
@@ -59,7 +62,7 @@ class _DriverlicenceRegState extends State<DriverlicenceReg> {
               const Text(
                 'Driver Licence',
                 style: TextStyle(fontSize: 24),
-              )
+              ),
             ],
           ),
         ),
@@ -86,8 +89,7 @@ class _DriverlicenceRegState extends State<DriverlicenceReg> {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),
-                borderSide: const BorderSide(
-                    color: Color.fromARGB(255, 172, 106, 106), width: 1.5),
+                borderSide: const BorderSide(color: Colors.grey, width: 1.5),
               ),
               focusedBorder: OutlineInputBorder(
                 gapPadding: 0.0,
@@ -108,6 +110,13 @@ class _DriverlicenceRegState extends State<DriverlicenceReg> {
               const EdgeInsets.only(right: 50, left: 40, top: 10, bottom: 10),
           child: TextFormField(
             controller: driverLicenceExpiryDateController,
+            validator: (value) {
+              if (value == "") {
+                return 'Empty Date';
+              } else {
+                return null;
+              }
+            },
             textAlign: TextAlign.center,
             decoration: InputDecoration(
               suffixIcon: IconButton(
@@ -137,8 +146,7 @@ class _DriverlicenceRegState extends State<DriverlicenceReg> {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),
-                borderSide: const BorderSide(
-                    color: Color.fromARGB(255, 172, 106, 106), width: 1.5),
+                borderSide: const BorderSide(color: Colors.grey, width: 1.5),
               ),
               focusedBorder: OutlineInputBorder(
                 gapPadding: 0.0,
