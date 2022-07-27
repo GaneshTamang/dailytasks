@@ -10,9 +10,11 @@ class MyInfo extends StatefulWidget {
 }
 
 class _MyInfoState extends State<MyInfo> {
+  //controllers for forms
   TextEditingController idNumberController = TextEditingController();
   TextEditingController idNameController = TextEditingController();
   @override
+  //main build for Myinfo Expanded tile
   Widget build(BuildContext context) {
     // log(widget.isExpanded.toString());
     return Padding(
@@ -39,6 +41,7 @@ class _MyInfoState extends State<MyInfo> {
       ),
     );
   }
+  //method explanations
 
   Padding _gettiletitle() {
     return Padding(

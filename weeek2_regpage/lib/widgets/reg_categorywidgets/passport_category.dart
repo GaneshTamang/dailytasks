@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:registrationpage/registrationforms/dropdowns.dart/isssuedcountry_drop_down.dart';
+import 'package:registrationpage/models/country_states_model.dart';
+
+import '../drop_downs/isssuedcountry_drop_down.dart';
 
 class PassportReg extends StatefulWidget {
-  final String sm;
-  const PassportReg({Key? key, required this.sm}) : super(key: key);
+  final String currentMainDropdownCountry;
+  const PassportReg({Key? key, required this.currentMainDropdownCountry})
+      : super(key: key);
 
   @override
   State<PassportReg> createState() => _PassportRegState();
 }
 
 class _PassportRegState extends State<PassportReg> {
+  CountryStatesModel selectedstateModel = countryStates[0];
+  //var and controllers for passport
+  //var for datetimepickerof issue and expiry
   DateTime? _myexpdate;
   DateTime? _myissuedate;
   TextEditingController passportIssuedDateController = TextEditingController();
@@ -39,7 +45,9 @@ class _PassportRegState extends State<PassportReg> {
 
             //issue date
             _getPassportissuedateForm(context),
-            widget.sm == 'Malaysia'
+            //checking condition for drop if card tile is for Malaysia the return dropdown States
+            //here widget.var is used to initiate the variablein staeful
+            widget.currentMainDropdownCountry == 'Malaysia'
                 ? const IssuedCountryDropDwon()
                 : const SizedBox(),
           ],
@@ -47,6 +55,8 @@ class _PassportRegState extends State<PassportReg> {
       ),
     );
   }
+
+  //method explanations for passport tile
 
   Padding _getPassportissuedateForm(BuildContext context) {
     return Padding(

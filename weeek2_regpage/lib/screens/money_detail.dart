@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:registrationpage/screens/notificpage.dart';
+import 'package:registrationpage/screens/notification_page.dart';
 
-class FinalPage extends StatelessWidget {
+class MoneyDetailPage extends StatelessWidget {
   final String sendamount;
   final String bankACNum;
   final String recipeintsRefrence;
   final String payDetails;
-  const FinalPage(
+  const MoneyDetailPage(
       {Key? key,
       required this.sendamount,
       required this.bankACNum,

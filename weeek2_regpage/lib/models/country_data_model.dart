@@ -15,7 +15,7 @@ class CountryModel {
       required this.isMyPRVisble});
 }
 
-//list of modelobjects
+//list of modelobjects data similar to rest api
 List<CountryModel> countries = [
   CountryModel(
       countryname: 'Singapore',

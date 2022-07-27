@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
-class NewIcreg extends StatefulWidget {
-  const NewIcreg({Key? key}) : super(key: key);
+class DriverlicenceReg extends StatefulWidget {
+  const DriverlicenceReg({Key? key}) : super(key: key);
 
   @override
-  State<NewIcreg> createState() => _NewIcregState();
+  State<DriverlicenceReg> createState() => _DriverlicenceRegState();
 }
 
-class _NewIcregState extends State<NewIcreg> {
-  DateTime? _icExpirydate;
-  TextEditingController icdatecontroller = TextEditingController();
-  TextEditingController icidnamecontroller = TextEditingController();
+class _DriverlicenceRegState extends State<DriverlicenceReg> {
+  DateTime? _myDlexpDate;
+  TextEditingController driverlicenNumcontroller = TextEditingController();
+  TextEditingController driverLicenceExpiryDateController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -19,35 +20,41 @@ class _NewIcregState extends State<NewIcreg> {
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.black)),
+            border: Border.all(color: Colors.grey)),
 
         //Expansion tile
-        child: ExpansionTile(
-          maintainState: true,
-          title:
-              //title decoration for heading withbox
-              _setTiletitle(),
-          //on expansion childrens with form
-          children: [
-            //id number
-            _getIcIdentification(),
-            //Expiry data
-            _getIcExpiry(context),
-          ],
-        ),
+        child: _textformfordriverLicence(),
       ),
     );
   }
 
-  Padding _getIcExpiry(BuildContext context) {
+//method Explanations
+
+  ExpansionTile _textformfordriverLicence() {
+    return ExpansionTile(
+      initiallyExpanded: true,
+      maintainState: true,
+
+      title:
+          //title decoration for heading withbox
+          setTitleForDriverLicence(),
+      //on expansion childrens with form
+      children: [
+        //id number
+        getTextformIdNum(),
+        getExpirydateForm(),
+      ],
+    );
+  }
+
+  Padding getExpirydateForm() {
     return Padding(
       padding: const EdgeInsets.only(right: 50, left: 40, top: 10, bottom: 10),
       child: TextFormField(
-        keyboardType: TextInputType.datetime,
-        controller: icdatecontroller,
+        controller: driverLicenceExpiryDateController,
         validator: (value) {
           if (value == "") {
-            return 'Date is Empty';
+            return 'Empty Date';
           } else {
             return null;
           }
@@ -58,17 +65,17 @@ class _NewIcregState extends State<NewIcreg> {
               onPressed: () {
                 showDatePicker(
                         context: context,
-                        initialDate: _icExpirydate == null
+                        initialDate: _myDlexpDate == null
                             ? DateTime.now()
-                            : _icExpirydate!,
+                            : _myDlexpDate!,
                         firstDate: DateTime(2000),
                         lastDate: DateTime(2046))
                     .then((pickeddatebyapp) {
                   setState(() {
-                    _icExpirydate = pickeddatebyapp;
+                    _myDlexpDate = pickeddatebyapp;
                   });
-                  icdatecontroller.text =
-                      '${_icExpirydate!.year}/${_icExpirydate!.month}/${_icExpirydate!.day}';
+                  driverLicenceExpiryDateController.text =
+                      '${_myDlexpDate!.year}/${_myDlexpDate!.month}/${_myDlexpDate!.day}';
                 });
               },
               icon: const Icon(
@@ -86,29 +93,30 @@ class _NewIcregState extends State<NewIcreg> {
           focusedBorder: OutlineInputBorder(
             gapPadding: 0.0,
             borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(color: Colors.grey, width: 1.5),
+            borderSide: const BorderSide(
+                color: Color.fromARGB(255, 235, 26, 11), width: 1.5),
           ),
           // focusedBorder: OutlineInputBorder(
 
           hintText: 'Valid upto',
-          labelText: ' Expiry date',
+          labelText: 'Driver licence Expiry date',
           contentPadding: const EdgeInsets.all(8),
         ),
       ),
     );
   }
 
-  Padding _getIcIdentification() {
+  Padding getTextformIdNum() {
     return Padding(
       padding: const EdgeInsets.only(right: 50, left: 40, top: 10, bottom: 10),
       child: TextFormField(
-        controller: icidnamecontroller,
         validator: (cntrlrvalue) {
           if (cntrlrvalue != null && cntrlrvalue.length < 14) {
             return 'enter atleast 14 char';
           }
           return null;
         },
+        controller: driverlicenNumcontroller,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           border: OutlineInputBorder(
@@ -122,19 +130,20 @@ class _NewIcregState extends State<NewIcreg> {
           focusedBorder: OutlineInputBorder(
             gapPadding: 0.0,
             borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(color: Colors.grey, width: 1.5),
+            borderSide: const BorderSide(
+                color: Color.fromARGB(255, 235, 26, 11), width: 1.5),
           ),
           // focusedBorder: OutlineInputBorder(
 
-          hintText: ' Id:Identification No',
-          labelText: ' Identification No',
+          hintText: 'Driving Licence Id No',
+          labelText: 'Driving Licence Id No',
           contentPadding: const EdgeInsets.all(8),
         ),
       ),
     );
   }
 
-  Padding _setTiletitle() {
+  Padding setTitleForDriverLicence() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -160,9 +169,9 @@ class _NewIcregState extends State<NewIcreg> {
               ),
             ),
             const Text(
-              'New IC',
+              'Driver Licence',
               style: TextStyle(fontSize: 24),
-            )
+            ),
           ],
         ),
       ),

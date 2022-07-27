@@ -1,18 +1,18 @@
-class States {
+class CountryStatesModel {
   String country;
   List<String> statelist;
-  States({required this.country, required this.statelist});
+  CountryStatesModel({required this.country, required this.statelist});
 }
 
-List<States> countryStates = [
-  States(country: 'Malaysia', statelist: [
+List<CountryStatesModel> countryStates = [
+  CountryStatesModel(country: 'Malaysia', statelist: [
     'Johor',
     'Kedah',
     'Kelatah',
     'Perlis',
     'Choose issued State'
   ]),
-  States(
+  CountryStatesModel(
       country: 'Nepal',
       statelist: ['kathmandu', 'Bhaktapur', 'Lalitpur', 'Pokhara']),
 ];

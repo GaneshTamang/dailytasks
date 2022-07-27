@@ -1,8 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:registrationpage/registrationforms/dropdowns.dart/mybank_drop_down.dart';
-import 'package:registrationpage/screens/finalpage.dart';
+
+import 'package:registrationpage/screens/money_detail.dart';
+
+import '../widgets/drop_downs/mybank_drop_down.dart';
 
 class SendMoneyPage extends StatefulWidget {
   const SendMoneyPage({Key? key}) : super(key: key);
@@ -320,7 +322,7 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
 
                         if (isValidform) {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => FinalPage(
+                              builder: (context) => MoneyDetailPage(
                                   sendamount: sendamountcontroller.text,
                                   bankACNum: getBankACNumCntroller.text,
                                   recipeintsRefrence:
